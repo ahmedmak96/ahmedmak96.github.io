@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- Created by pdf2htmlEX (https://github.com/pdf2htmlEX/pdf2htmlEX) -->
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" translate="yes">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -26,20 +26,6 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Ahmed Makni","jobTitle":"Senior / Lead Backend Developer","alternateName":"Ingénieur senior / lead backend","description":"Node.js specialist. Designs and builds backends and platforms from scratch. Based in Paris, Île-de-France, France; available for freelance, consulting, and contract work across France and the EU. Communicates professionally in English, French, and Arabic.","address":{"@type":"PostalAddress","addressLocality":"Paris","addressRegion":"Île-de-France","addressCountry":"FR"},"knowsAbout":["Node.js","Backend engineering","API design","Distributed systems","Greenfield product development","développement backend","ingénierie logicielle","API REST","microservices","freelance backend Paris","mission développeur Node.js"],"knowsLanguage":[{"@type":"Language","name":"English","alternateName":"en"},{"@type":"Language","name":"French","alternateName":"fr"},{"@type":"Language","name":"Arabic","alternateName":"ar"}],"areaServed":[{"@type":"Country","name":"France"},{"@type":"Place","name":"European Union"}],"sameAs":[]}
 </script>
-<style type="text/css">
-/* CV language switcher + Google Translate cleanup */
-#cv-lang-ui{position:fixed;top:12px;right:12px;z-index:2147483000;display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:10px 12px;background:rgba(46,46,46,.92);color:#fff;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:13px;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.35);max-width:min(100vw - 24px,420px)}
-#cv-lang-ui .cv-lang-label{font-weight:600;letter-spacing:.02em;margin-right:4px}
-#cv-lang-ui .cv-lang-btn{cursor:pointer;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.12);color:#fff;padding:6px 12px;border-radius:6px;font:inherit;line-height:1.2}
-#cv-lang-ui .cv-lang-btn:hover{background:rgba(255,255,255,.22)}
-#cv-lang-ui .cv-lang-btn:focus{outline:2px solid #0cf;outline-offset:2px}
-#cv-lang-ui .cv-lang-btn.cv-lang-active{background:#0cf;border-color:#0cf;color:#111}
-#google_translate_element{height:0;overflow:hidden;width:0;position:absolute;pointer-events:none;opacity:0}
-body.goog-translate-active{top:0!important}
-iframe.goog-te-banner-frame{display:none!important}
-.goog-te-balloon-frame{display:none!important}
-@media print{#cv-lang-ui{display:none!important}}
-</style>
 <style type="text/css">
 /*! 
  * Base CSS for pdf2htmlEX
@@ -366,127 +352,6 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 </script>
 </head>
 <body>
-<div id="cv-lang-ui" class="notranslate" role="navigation" aria-label="Translate page" translate="no">
-<span class="cv-lang-label">Translate</span>
-<button type="button" class="cv-lang-btn" id="cv-lang-en" data-gt="en" lang="en">English</button>
-<button type="button" class="cv-lang-btn" id="cv-lang-fr" data-gt="fr" lang="fr">Français</button>
-<button type="button" class="cv-lang-btn" id="cv-lang-ar" data-gt="ar" lang="ar" dir="rtl">العربية</button>
-<div id="google_translate_element" aria-hidden="true"></div>
-</div>
-<script>
-(function () {
-  var CK = 'googtrans';
-  function parseTarget() {
-    var m = document.cookie.match(new RegExp('(?:^|;\\s*)' + CK + '=([^;]*)'));
-    if (!m || !m[1]) return 'en';
-    var v = m[1];
-    try { v = decodeURIComponent(v); } catch (e) {}
-    var parts = v.split('/').filter(Boolean);
-    return parts.length ? parts[parts.length - 1] : 'en';
-  }
-  function setGoogTrans(pathOrEmpty) {
-    var path = ';path=/';
-    var exp = ';expires=Thu, 01 Jan 1970 00:00:00 GMT';
-    if (!pathOrEmpty) {
-      document.cookie = CK + '=' + exp + path;
-      if (location.hostname) {
-        document.cookie = CK + '=' + exp + path + 'domain=.' + location.hostname;
-        document.cookie = CK + '=' + exp + path + 'domain=' + location.hostname;
-      }
-    } else {
-      document.cookie = CK + '=' + pathOrEmpty + path;
-    }
-  }
-  function updateActiveButtons() {
-    var t = parseTarget();
-    document.querySelectorAll('#cv-lang-ui .cv-lang-btn').forEach(function (btn) {
-      var code = btn.getAttribute('data-gt');
-      var active = code === 'en' ? (t === 'en') : (code === t);
-      btn.classList.toggle('cv-lang-active', active);
-    });
-  }
-  function applyDocLang(target) {
-    if (target === 'ar') {
-      document.documentElement.setAttribute('dir', 'rtl');
-      document.documentElement.setAttribute('lang', 'ar');
-    } else if (target === 'fr') {
-      document.documentElement.setAttribute('dir', 'ltr');
-      document.documentElement.setAttribute('lang', 'fr');
-    } else {
-      document.documentElement.setAttribute('dir', 'ltr');
-      document.documentElement.setAttribute('lang', 'en');
-    }
-  }
-  function fireChange(el) {
-    if (!el) return;
-    try {
-      el.dispatchEvent(new Event('change', { bubbles: true }));
-    } catch (e) {
-      var ev = document.createEvent('HTMLEvents');
-      ev.initEvent('change', true, true);
-      el.dispatchEvent(ev);
-    }
-  }
-  function runGoogleTranslate(lang) {
-    var tries = 0;
-    var max = 250;
-    var id = setInterval(function () {
-      tries++;
-      var combo = document.querySelector('select.goog-te-combo');
-      if (!combo) combo = document.querySelector('.goog-te-combo');
-      if (combo) {
-        clearInterval(id);
-        if (lang === 'en') {
-          combo.value = '';
-          fireChange(combo);
-        } else if (lang === 'fr' || lang === 'ar') {
-          combo.value = lang;
-          fireChange(combo);
-        }
-        updateActiveButtons();
-      } else if (tries >= max) {
-        clearInterval(id);
-      }
-    }, 40);
-  }
-  var initial = parseTarget();
-  applyDocLang(initial);
-  updateActiveButtons();
-  window.googleTranslateElementInit = function () {
-    if (!window.google || !google.translate) return;
-    new google.translate.TranslateElement(
-      { pageLanguage: 'en', includedLanguages: 'en,fr,ar', layout: google.translate.TranslateElement.InlineLayout.SIMPLE },
-      'google_translate_element'
-    );
-    var want = parseTarget();
-    if (want === 'fr' || want === 'ar') {
-      runGoogleTranslate(want);
-    }
-  };
-  document.getElementById('cv-lang-en').addEventListener('click', function () {
-    if (parseTarget() === 'en' && !document.cookie.match(/googtrans=/)) {
-      runGoogleTranslate('en');
-      return;
-    }
-    setGoogTrans('');
-    applyDocLang('en');
-    location.reload();
-  });
-  document.getElementById('cv-lang-fr').addEventListener('click', function () {
-    if (parseTarget() === 'fr') return;
-    setGoogTrans('/en/fr');
-    applyDocLang('fr');
-    runGoogleTranslate('fr');
-  });
-  document.getElementById('cv-lang-ar').addEventListener('click', function () {
-    if (parseTarget() === 'ar') return;
-    setGoogTrans('/en/ar');
-    applyDocLang('ar');
-    runGoogleTranslate('ar');
-  });
-})();
-</script>
-<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <div id="sidebar">
 <div id="outline">
 </div>
